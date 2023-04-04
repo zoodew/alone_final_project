@@ -7,9 +7,29 @@
     <title>signUp</title>
 
     <style>
+        section{
+            margin-left: auto;
+            margin-right: auto;
+            width: 800px;
+        }
+
+        #title {
+            margin-top: 5%;
+            margin-bottom: 5%;
+        }
+
+        section * {
+            margin-left: auto;
+            margin-right: auto;
+        }
+
         #phone, #verification-code{
             width: 70%;
         }
+        /* #phBtn1, #phBtn2 {
+            float: left;
+        } */
+
 
 
 
@@ -21,7 +41,10 @@
 </head>
 <body>
 
-    <h2>회원가입</h2>
+    <section>
+
+    
+    <h1 id="title" align="center">회원가입</h1>
     <form class="needs-validation" novalidate>
         <div class="form-group">
             <div class="col-md-6 mb-3">
@@ -121,7 +144,7 @@
         </div>
         <div class="form-group">
             <div class="col-md-6 mb-3">
-                <label for="email">이름</label>
+                <label for="email">이메일</label>
                 <input type="email" id="email" class="form-control" aria-describedby="emailHelpBlock" placeholder="이메일 입력" required>
                 <small id="emailHelpBlock" class="form-text text-muted">
                     이메일 인증을 위해 필수 입력사항입니다.
@@ -147,21 +170,37 @@
                 </div> -->
             </div>
         </div>
+<!-- 주소 api -->
+        <div class="form-group">
+            <div class="col-md-6 mb-3">
+                <!-- <label for="email">이메일</label>
+                <input type="email" id="email" class="form-control" aria-describedby="emailHelpBlock" placeholder="이메일 입력" required>
+                <small id="emailHelpBlock" class="form-text text-muted">
+                    이메일 인증을 위해 필수 입력사항입니다.
+                </small>
+                <div class="valid-feedback">
+                    이름 입력완료
+                </div> -->
+
+                <label for="sample4_postcode">주소</label><br>
+                <input type="text" id="sample4_postcode" class="form-control" aria-describedby="addressHelpBlock" placeholder="우편번호" required>
+                <input type="button" onclick="sample4_execDaumPostcode()" value="우편번호 찾기"><br>
+                <input type="text" id="sample4_roadAddress" class="form-control" placeholder="도로명주소">
+                <input type="text" id="sample4_jibunAddress" class="form-control" placeholder="지번주소"><br>
+                <span id="guide" style="color:#999;display:none"></span>
+                <input type="text" id="sample4_detailAddress" class="form-control" placeholder="상세주소">
+                <input type="text" id="sample4_extraAddress" class="form-control" placeholder="참고항목">
+                <small id="addressHelpBlock" class="form-text text-muted">
+                    정확한 주소를 입력해 주세요.
+                </small>
+                <!-- <div class="valid-feedback">
+                    주소 입력완료
+                </div> -->
+            </div>
+        </div>
 
 
-
-
-
-
-        <!-- 챗 gpt 확인하기 -->
-        <label for="phone-number">전화번호</label><br>
-        <input type="tel" id="phone-number" name="phone-number" required>
-        <button type="button" onclick="sendVerificationCode()">인증번호 받기</button><br>
-        <input type="text" id="verification-code" name="verification-code" required>
-        <button type="button" onclick="verifyCode()">인증번호 확인</button><br>
-
-
-
+    </section>
 
 <!-- 아이디 리콰이어드 초록 파랑 -->
         <div class="form-row">
