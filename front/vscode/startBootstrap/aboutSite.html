@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>about site</title>
+
+    <!-- jQuery -->
+    <script src="./js/jquery-3.6.3.js"></script>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">    
+
+    <style>
+        .box {
+ opacity: 0;
+}
+
+.box.active {
+  opacity: 1;
+}
+
+/* ------------- */
+
+* {
+  margin: 0;
+  padding: 0;
+  outline: none;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: #f8f8f8;
+}
+
+@import url("https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css");
+
+* {
+  font-family: Pretendard;
+}
+
+        
+    </style>
+
+</head>
+<body>
+
+    <div calss="wrap">
+        <!-- <div class="box">1</div>
+        <div class="box">2</div>
+        <div class="box">3</div>
+        <div class="box">4</div>
+        <div class="box">5</div>
+        <div class="box">6</div>
+        <div class="box">7</div>
+        <div class="box">8</div>
+        <div class="box">9</div>
+        <div class="box">10</div> -->
+        <img src="./img/testimg.jpg" alt="#" class="box">
+        <img src="./img/testimg.jpg" alt="#" class="box">
+        <img src="./img/testimg.jpg" alt="#" class="box">
+        <img src="./img/testimg.jpg" alt="#" class="box">
+        <img src="./img/testimg.jpg" alt="#" class="box">
+        <img src="./img/testimg.jpg" alt="#" class="box">
+        <img src="./img/testimg.jpg" alt="#" class="box">
+    </div>
+
+
+
+
+
+
+
+
+
+
+    <script>
+
+const options = {
+  root: null, // viewport
+  rootMargin: "0px",
+  threshold: 1.0,  // 50%가 viewport에 들어와 있어야 callback 실행
+}
+
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('active');
+    } else {
+      entry.target.classList.remove('active');
+    }
+  });
+}, options);
+
+const boxList = document.querySelectorAll('.box');
+
+// 반복문을 돌려 모든 DOM에 적용
+boxList.forEach(el => observer.observe(el));
+        
+        // // 아래의 옵션으로 뷰포트가 무엇인지, 그리고 교차영역은 어떻게 할 것인지 정해줍니다. 
+
+        // const options = {
+        //     root: null, // viewport
+        //     rootMargin: "0px",
+        //     threshold: 0 // 50%가 viewport에 들어와 있어야 callback 실행
+        // };
+
+        // // new IntersectionObserver객체의 콜백함수를 인자로 줍니다. 
+        // // 이때 entries는 스크롤 이벤트를 적용할 모든 dom 객체입니다. 
+
+        // const observer = new IntersectionObserver((entries) => {
+        //     entries.forEach((entry) => {
+        //         // 해당 dom이 교차영역에 진입 시 적용하고 싶은 로직 작성
+
+
+        //         if (entry.isIntersecting) {
+        //             entry.target.classList.add("inView");
+        //         }
+        //     });
+        // }, options);
+
+        // const boxList = document.querySelectorAll(".img");
+
+        // // 반복문을 돌려 모든 DOM에 스크롤 이벤트 적용
+        // boxList.forEach((el) => observer.observe(el));
+
+
+
+
+
+
+
+
+        // $(document).ready(function() {
+        //     $(window).scroll( function(){
+                    
+        //         $('image').each( function(i){
+                    
+        //             var bottom_of_element = $(this).offset().top + $(this).outerHeight() / 3;
+        //             var bottom_of_window = $(window).scrollTop() + $(window).height();
+                    
+        //             if( bottom_of_window > bottom_of_element ){
+        //                 $(this).animate({'opacity':'1'},700);
+        //             }
+                    
+        //         }); 
+        //     });
+        // });;
+
+
+
+    </script>
+
+
+    <script src="./aboutSite.js"></script>
+    <!-- Bootstrap jQuery, JS -->
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.min.js" integrity="sha384-+sLIOodYLS7CIrQpBjl+C7nPvqq+FbNUBDunl/OZv93DB7Ln/533i8e/mZXLi/P+" crossorigin="anonymous"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-Fy6S3B9q64WdZWQUiU+q4/2Lc9npb8tCaSX9FK7E8HnRr0Jz8D6OP9dO5Vg3Q9ct" crossorigin="anonymous"></script>
+</body>
+</html>
