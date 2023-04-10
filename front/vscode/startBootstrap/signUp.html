@@ -47,19 +47,19 @@
         #topDivBirth{
             margin-bottom: 0;
         }
-        #divBirth{
+        #divBirth1{
             height: 30px;
         }
         #labelBirth {
             margin-left: 11px;
         }
-        #birth-year, #validationCustom04, #validationCustom05{
+        #birth-year, #birth-month, #birth-date{
             width: 30%;
             float: left;
             margin-right: 5px;
             margin-left: 5px;
         }
-        #birth-year{
+        #birth-year, #birthHelpBlock{
             margin-left: 13px;
         }
         
@@ -120,10 +120,10 @@
             background-color: rgb(120, 116, 100);
             border-color: rgb(120, 116, 100);
         }
-        #btnSubmit:hover {
+        /* #btnSubmit:hover {
             background-color: rgb(226, 217, 179);
             border-color: rgb(226, 217, 179);
-        }
+        } */
     
 
     </style>
@@ -136,7 +136,7 @@
 
     <section>
 
-    <h1 style="color:red;">제이쿼리 06_이벤트.html 에 동적으로 유효성검사 잇음!!!!!!!!!!!보고 확인하기이잉이!!! 약관창 배경색 바꾸기 체크박스 스타일 바꾸기이이이이이이</h1>
+    <h6 style="color:red;">아이디, 이메일 전화 번호 중복 검사 ajax로, 약관 체크박스 변경 셀렉트 색상 변경, 비번 안전 보통 등등, 유효성 검사 완료해야 폼 넘어가게</h6>
     <h1 id="title" align="center">회원가입</h1>
     <form class="needs-validation" novalidate>
         <div class="form-group">
@@ -157,7 +157,7 @@
                 <label for="password">비밀번호</label>
                 <input type="password" id="password" class="form-control" aria-describedby="pwdHelpBlock" placeholder="비밀번호 입력" required>
                 <small id="pwdHelpBlock" class="form-text text-muted">
-                    어떠케저떠케 법칙맞춰서 비번입력하십숑
+                    하나 이상의 대소문자, 하나의 숫자 및 하나의 특수 문자를 포함한 8 ~ 12자 
                 </small>
                 <span id="pwdCheck"></span>
                 <!-- <div class="valid-feedback">
@@ -182,9 +182,10 @@
             <div class="col-md-6 mb-3">
                 <label for="name">이름</label>
                 <input type="text" id="name" class="form-control" aria-describedby="nameHelpBlock" placeholder="이름 입력" required>
-                <small id="pwdChHelpBlock" class="form-text text-muted">
+                <small id="nameHelpBlock" class="form-text text-muted">
                     이름 제대로 적어랑
                 </small>
+                <span id="nameCheck"></span>
                 <!-- <div class="valid-feedback">
                     이름 입력완료
                 </div> -->
@@ -192,13 +193,13 @@
         </div>
 <!-- 생년월일 -->
         <div id="topDivBirth" class="form-group">
-            <div id="divBirth" class="form-row">
+            <div id="divBirth1" class="form-row">
                 <div  class="col-md-6 mb-3">
                     <label id="labelBirth" for="birth-year">생년월일</label>
                 </div>
             </div>
-            <div class="form-row">
-                <div class="col-md-6 mb-3">
+            <div id="divBirth2" class="form-row">
+                <div id="divBirth3" class="col-md-6 mb-3">
                     <input type="text" class="form-control" id="birth-year" aria-describedby="birthHelpBlock" placeholder="년" required>
                     <!-- <small id="birthHelpBlock" class="form-text text-muted">
                         생년월일 제대로 적어랑
@@ -206,8 +207,8 @@
                     <!-- <div class="invalid-feedback">
                         생년월일 년
                     </div> -->
-                    <!-- <label for="validationCustom04"></label> -->
-                    <select class="custom-select" id="validationCustom04" required>
+                    <!-- <label for="birth-month"></label> -->
+                    <select class="custom-select" id="birth-month" required>
                         <option selected disabled value="">월</option>
                         <option value="01">1월</option>
                         <option value="02">2월</option>
@@ -225,11 +226,15 @@
                     <!-- <div class="invalid-feedback">
                         생년월일 월
                     </div> -->
-                    <!-- <label for="validationCustom05"></label> -->
-                    <input type="text" class="form-control" id="validationCustom05" placeholder="일" required>
+                    <!-- <label for="birth-date"></label> -->
+                    <input type="text" class="form-control" id="birth-date" placeholder="일" aria-describedby="birthHelpBlock" required>
                     <!-- <div class="invalid-feedback">
                         생년월일 일
                     </div> -->
+                    <small id="birthHelpBlock" class="form-text text-muted">
+                    년(네 자리 ex.1995) 일(두 자리 ex.01)로 입력해주세요.
+                    </small>
+                    <span id="birthCheck"></span>
                 </div>
             </div>
         </div>
@@ -237,7 +242,7 @@
             <div class="col-md-6 mb-3">
                 <label for="gender">성별</label>
                 <select class="custom-select" id="gender" name="gender" required>
-                    <option value="">성별</option>
+                    <option disabled value="">성별</option>
                     <option value="01">남성</option>
                     <option value="02">여성</option>
                 </select><br>
@@ -256,6 +261,7 @@
                 <small id="emailHelpBlock" class="form-text text-muted">
                     이메일 인증을 위해 필수 입력사항입니다.
                 </small>
+                <span id="emailCheck"></span>
                 <!-- <div class="valid-feedback">
                     이름 입력완료
                 </div> -->
@@ -273,9 +279,10 @@
                     <input type="text" id="verification-code" name="verification-code" class="form-control" placeholder="인증번호를 입력해주세요" required>
                     <button type="button" id="btnPh2" class="btn btn-secondary" onclick="verifyCode()">인증번호 확인</button><br>
                 </div>
-                <small id="emailHelpBlock" class="form-text text-muted">
+                <small id="phoneHelpBlock" class="form-text text-muted">
                     휴대폰 인증을 위해 필수 입력사항입니다.
                 </small>
+                <span id="phoneCheck"></span>
                 <!-- <div class="valid-feedback">
                     폰번호 입력완료
                 </div> -->
@@ -299,7 +306,7 @@
                     <input type="button" id="addressBtn"class="btn btn-secondary" onclick="sample6_execDaumPostcode()" value="우편번호 찾기"><br>
                 </div>
                 <div class="addressDiv">
-                    <input type="text" id="sample6_address" class="form-control" placeholder="주소">
+                    <input type="text" id="sample6_address" class="form-control" placeholder="주소" >
                 </div>
                 <div class="addressDiv">
                     <input type="text" id="sample6_detailAddress"class="form-control"  placeholder="상세주소">
@@ -375,7 +382,7 @@
             </div>
         </div>
         <div id="submitDiv">
-            <button id="btnSubmit" class="btn btn-secondary btn-lg" type="submit">회원가입</button>
+            <button id="btnSubmit" class="btn btn-secondary btn-lg" type="submit" disabled>회원가입</button>
         </div>
     </form>
     </section>
@@ -383,6 +390,10 @@
     
 
     <script>
+
+//    let validate = [];
+//    let validate = false;
+
     // Example starter JavaScript for disabling form submissions if there are invalid fields
     (function() {
     'use strict';
@@ -407,9 +418,7 @@
         // let id = event.target.value;                // 자바스크립트용 표현
         let id = $(event.target).val();             // 제이쿼리 표현
         let regExp = /^[a-z][a-z0-9]{3,11}$/        // 정규표현식
-
-        console.log(id);
-        console.log(regExp.test(id));
+        
 
         // 유효성 체크만 되어있음
         // db와 비교해서 중복되는 값이 잇는지 확인하는 것도 포함시키기
@@ -419,34 +428,33 @@
             $('#idCheck')
                 .text('사용 가능한 아이디')
                 .css({color: 'green', fontweight: 'bold'});
+
+            $("#btnSubmit"). attr("disabled", true);
         } else {
             $('#idCheck')
                 .text('사용 불가능한 아이디')
                 .css({color: 'red', fontweight: 'bold'});
-        }
-        });
 
+            $("#btnSubmit"). attr("disabled", false);
+        }
+
+        });
 
         // 비밀번호 체크
         $('#password').keyup((event) => {
         // let id = event.target.value;                // 자바스크립트용 표현
         let pwd = $(event.target).val();             // 제이쿼리 표현
-        let regExp = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[$@$!%*?&])[A-Za-z\d$@$!%*?&]{8,10}/        // 정규표현식
+        let regExp = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,12}$/        // 정규표현식
 
-        console.log(pwd);
-        console.log(regExp.test(pwd));
-
-        // 유효성 체크만 되어있음
-        // 자물쇠 기능 넣기 안전, 보통 위험 나누기
         if(pwd === null || pwd === '') {
-            $('pwdCheck').text('');
+            $('#pwdCheck').text('');
         } else if(regExp.test(pwd)) {
             $('#pwdCheck')
-                .text('사용할 수 있는 비밀번호입니다.')
+                .text('사용 가능한 비밀번호')
                 .css({color: 'green', fontweight: 'bold'});
         } else {
             $('#pwdCheck')
-                .text('사용할 수 없는 비밀번호입니다.')
+                .text('사용 불가능한 비밀번호')
                 .css({color: 'red', fontweight: 'bold'});
         }
         });
@@ -467,6 +475,173 @@
                 .text('비밀번호가 일치합니다.')
                 .css({color: 'green', fontweight: 'bold'});
             }
+        });
+
+        // 이름 체크
+        $('#name').keyup((event) => {
+        // let id = event.target.value;                // 자바스크립트용 표현
+        let name = $(event.target).val();             // 제이쿼리 표현
+        let regExp = /^[가-힣]{2,10}$/        // 정규표현식
+
+        if(name === null || name === '') {
+            $('#nameCheck').text('');
+        } else if(regExp.test(name)) {
+            $('#nameCheck')
+                .text('사용 가능한 이름')
+                .css({color: 'green', fontweight: 'bold'});
+        } else {
+            $('#nameCheck')
+                .text('사용 불가능한 이름')
+                .css({color: 'red', fontweight: 'bold'});
+        }
+        });
+
+        // 생년월일
+        // 년
+        $('#birth-year').keyup((event) => {
+            // let id = event.target.value;                // 자바스크립트용 표현
+            let year = $(event.target).val();             // 제이쿼리 표현
+            let regExp = /^(19[0-9][0-9]|20\d{2})$/       // 정규표현식
+            var now = new Date();	                        // 현재 날짜 및 시간
+            var nowYear = now.getFullYear();
+            
+            if(year > nowYear) {
+                $('#birthCheck').text('유효하지 않은 연도입니다.');
+            } else {
+                if(year === null || year === '') {
+                    $('#birthCheck').text('');
+                } else if(regExp.test(year)) {
+                    $('#birthCheck')
+                        .text('태어난 연도를 정확히 입력하셨습니다.')
+                        .css({color: 'green', fontweight: 'bold'});
+                } else {
+                    $('#birthCheck')
+                        .text('태어난 연도를 정확히 입력해 주세요')
+                        .css({color: 'red', fontweight: 'bold'});
+                }
+            }
+        });
+        // 일
+        $('#birth-date').keyup((event) => {
+
+            // let id = event.target.value;                // 자바스크립트용 표현
+            let date = $(event.target).val();             // 제이쿼리 표현
+            let birthMonth = $('#birth-month option:selected').val();
+
+            console.log(birthMonth);
+
+            if(birthMonth == '01' || birthMonth == '03' || birthMonth == '05' || birthMonth == '07' || birthMonth == '08' || birthMonth == '10' || birthMonth == '12') {
+                
+                let regExp = /^(0[1-9]|[1-2][0-9]|3[0-1])$/
+                
+                if(date === null || date === '') {
+                    $('#birthCheck').text('');
+                } else if(regExp.test(date)) {
+                    $('#birthCheck')
+                        .text('태어난 일을 정확히 입력하셨습니다.')
+                        .css({color: 'green', fontweight: 'bold'});
+                } else {
+                    $('#birthCheck')
+                        .text('태어난 일을 정확히 입력해 주세요')
+                        .css({color: 'red', fontweight: 'bold'});
+                }
+
+            } else if(birthMonth == '04' || birthMonth == '06' || birthMonth == '09' || birthMonth == '11') {
+                
+                let regExp = /^(0[1-9]|[1-2][0-9]|3[0])$/
+                
+                if(date === null || date === '') {
+                    $('#birthCheck').text('');
+                } else if(regExp.test(date)) {
+                    $('#birthCheck')
+                        .text('태어난 일을 정확히 입력하셨습니다.')
+                        .css({color: 'green', fontweight: 'bold'});
+                } else {
+                    $('#birthCheck')
+                        .text('태어난 일을 정확히 입력해 주세요')
+                        .css({color: 'red', fontweight: 'bold'});
+                }
+
+            } else { // 2월
+                
+                let birthYear = $('#birth-year').val();
+                // 윤년
+                var isleap = (birthYear % 4 == 0 && (birthYear % 100 != 0 || birthYear % 400 == 0));
+                
+                if(isleap){
+                    let regExp = /^(0[1-9]|[1-2][0-9])$/
+    
+                    if(date === null || date === '') {
+                        $('#birthCheck').text('');
+                    } else if(regExp.test(date)) {
+                        $('#birthCheck')
+                            .text('태어난 일을 정확히 입력하셨습니다.')
+                            .css({color: 'green', fontweight: 'bold'});
+                    } else {
+                        $('#birthCheck')
+                            .text('태어난 일을 정확히 입력해 주세요')
+                            .css({color: 'red', fontweight: 'bold'});
+                    }
+                    
+                } else {
+                    let regExp = /^(0[1-9]|[1-2][0-8])$/
+    
+                    if(date === null || date === '') {
+                        $('#birthCheck').text('');
+                    } else if(regExp.test(date)) {
+                        $('#birthCheck')
+                            .text('태어난 일을 정확히 입력하셨습니다.')
+                            .css({color: 'green', fontweight: 'bold'});
+                    } else {
+                        $('#birthCheck')
+                            .text('태어난 일을 정확히 입력해 주세요')
+                            .css({color: 'red', fontweight: 'bold'});
+                    }
+
+                }
+            }
+        });
+
+        // 이메일 체크 
+        $('#email').keyup((event) => {
+        // let id = event.target.value;                // 자바스크립트용 표현
+        let email = $(event.target).val();             // 제이쿼리 표현
+        let regExp = /^[a-z0-9\.\-_]+@([a-z0-9\-]+\.)+[a-z]{2,6}$/       // 정규표현식
+
+        // 유효성 체크만 되어있음
+        // db와 비교해서 중복되는 값이 잇는지 확인하는 것도 포함시키기
+        if(email === null || email === '') {
+            $('#emailCheck').text('');
+        } else if(regExp.test(email)) {
+            $('#emailCheck')
+                .text('')
+                .css({color: 'green', fontweight: 'bold'});            
+        } else {
+            $('#emailCheck')
+                .text('이메일을 제대로 입력해주세요.')
+                .css({color: 'red', fontweight: 'bold'});            
+        }
+        });
+
+        // 폰 체크
+        $('#phone').keyup((event) => {
+        // let id = event.target.value;                // 자바스크립트용 표현
+        let phone = $(event.target).val();             // 제이쿼리 표현
+        let regExp = /^[0-9]{10,11}$/       // 정규표현식
+
+        // 유효성 체크만 되어있음
+        // db와 비교해서 중복되는 값이 잇는지 확인하는 것도 포함시키기
+        if(phone === null || phone === '') {
+            $('#phoneCheck').text('');
+        } else if(regExp.test(phone)) {
+            $('#phoneCheck')
+                .text('')
+                .css({color: 'green', fontweight: 'bold'});            
+        } else {
+            $('#phoneCheck')
+                .text("전화번호를 '-'없이 숫자만 입력해주세요")
+                .css({color: 'red', fontweight: 'bold'});
+        }
         });
 
 
@@ -545,14 +720,15 @@
                 document.getElementById("sample6_detailAddress").focus();
             }
         }).open();
-    }
+        }
+
 
     </script>
 
 
 
     <!-- 주소 api -->
-    <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+    <!-- <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script> -->
     <!-- Bootstrap jQuery, JS -->
     <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
