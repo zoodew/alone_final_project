@@ -13,7 +13,7 @@
         }
         section{
             width: 1200px;
-            height: 600px;
+            height: auto;
             margin-left: auto;
             margin-right: auto;
         }
@@ -26,13 +26,26 @@
         }
         #boardList{
             color:dimgray;
-            width: 90%;
+            width: 80%;
             margin-left: auto;
             margin-right: auto;
         }
+    /* 테이블 너비 */
+        .noTable{
+            width: 10%;
+            text-align: center;
+        }
+        .titleTable{
+            width: 70%;
+            padding-left: 20px;
+        }
+        .updateTable{
+            text-align: center;
+        }
+
         #writeButton{
             float: right;
-            margin-right: 5%;
+            margin-right: 15%;
         }
         #writeButton button:hover{
             background-color: rgb(120, 116, 100);
@@ -60,6 +73,7 @@
             border-color: rgb(120, 116, 100);
         }
 
+
     </style>
 </head>
 <body>
@@ -74,16 +88,16 @@
             <table id="boardList" class="table table-hover">
                 <thead>
                     <tr>
-                        <th class="" scope="col">번호</th>
-                        <th class="" scope="col">제목</th>
-                        <th class="" scope="col">등록일</th>
+                        <th class="noTable" scope="col">번호</th>
+                        <th class="titleTable" scope="col">제목</th>
+                        <th class="updateTable" scope="col">등록일</th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr>
-                        <td class="">1</td>
-                        <td class="">제목</td>
-                        <td class="">날짜</td>
+                        <td class="noTable">2524</td>
+                        <td class="titleTable">나에게 맞는 향수 테스트 이벤트 </td>
+                        <td class="updateTable">2023.04.11</td>
                     </tr>
                     <tr>
                         <td class="">2</td>
@@ -113,7 +127,7 @@
                     </div>
                 </div>
             </form>
-            <div id="pageBar">
+            <div id="pageBar" align="center">
                 <button type="button" class="btn btn-outline-secondary">&laquo;</button>
                 <button type="button" class="btn btn-outline-secondary">&lsaquo;</button>
                 <button type="button" class="btn btn-outline-secondary">1</button>
